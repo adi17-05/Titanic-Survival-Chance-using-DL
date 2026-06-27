@@ -26,6 +26,7 @@ with open("onehot_encoder.pkl","rb") as f:
     onehot=pickle.load(f)
 
 data['Sex']=label.transform(data['Sex'])
+data['Embarked']=data['Embarked'].replace('Cherbourg', 'Chebourg')
 embarked=onehot.transform(data[['Embarked']])
 
 embarked=pd.DataFrame(embarked,columns=onehot.get_feature_names_out())
